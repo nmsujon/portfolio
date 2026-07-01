@@ -1,36 +1,159 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# ✦ Nur Mohammad Sujon — Portfolio
 
-First, run the development server:
+**UI/UX Designer · Dhaka, Bangladesh**
+
+A high-fidelity, dark-themed portfolio built with **Next.js 16**, **Tailwind CSS 4**, and **Framer Motion** — engineered to showcase design craft at its finest.
+
+[![Next.js](https://img.shields.io/badge/Next.js-16.2.3-000?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.2.4-61DAFB?style=flat-square&logo=react&logoColor=000)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=fff)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-0055FF?style=flat-square&logo=framer&logoColor=fff)](https://www.framer.com/motion/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=fff)](https://www.typescriptlang.org/)
+
+</div>
+
+---
+
+## ⚡ Features
+
+| Feature | Description |
+| :--- | :--- |
+| **Glassmorphic Navbar** | Floating pill navbar with scroll-aware backdrop blur, animated hover highlights & active glow indicators |
+| **Hero Section** | Bold typographic hero with animated portrait, radial glow, and floating stats badge |
+| **Categories** | Bento-grid service cards with staggered reveal animations |
+| **Projects Showcase** | Case study cards with rich metadata, tech tags, and smooth viewport-triggered animations |
+| **Countries Served** | Interactive globe / map visualization of global reach |
+| **Contact CTA** | Service tag selector chips, glassmorphic modal with form validation & animated success state |
+| **Custom Cursor** | Magnetic cursor follower with hover-aware scaling |
+| **Social Sidebar** | Fixed vertical social links bar |
+| **Film Grain Overlay** | Subtle animated noise texture for premium aesthetic |
+
+---
+
+## 🛠 Tech Stack
+
+```
+Framework    →  Next.js 16 (App Router + Turbopack)
+Styling      →  Tailwind CSS 4 + Custom CSS utilities
+Animation    →  Framer Motion 12
+Icons        →  Lucide React + Custom SVG components
+Typography   →  Geist Sans & Geist Mono (next/font)
+Language     →  TypeScript 5
+```
+
+---
+
+## 📁 Project Structure
+
+```
+portfolio/
+├── public/
+│   └── assets/              # Images, logos, portraits
+├── src/
+│   ├── app/
+│   │   ├── globals.css      # Design tokens, glass utilities, animations
+│   │   ├── layout.tsx       # Root layout with Navbar, Cursor, SocialBar
+│   │   └── page.tsx         # Home page composition
+│   └── components/
+│       ├── Navbar.tsx        # Glassmorphic floating navbar
+│       ├── Hero.tsx          # Hero section with portrait & stats
+│       ├── Categories.tsx    # Service category bento grid
+│       ├── Projects.tsx      # Project showcase cards
+│       ├── CountriesServed.tsx # Global reach visualization
+│       ├── Contact.tsx       # CTA banner + glassmorphic form modal
+│       ├── Cursor.tsx        # Custom magnetic cursor
+│       ├── SocialBar.tsx     # Fixed social links sidebar
+│       ├── Icons.tsx         # Custom SVG icon components
+│       ├── Magnetic.tsx      # Magnetic hover wrapper
+│       └── Grain.tsx         # Film grain noise overlay
+├── package.json
+├── tsconfig.json
+├── next.config.ts
+└── eslint.config.mjs
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js** ≥ 18.x
+- **npm**, **yarn**, **pnpm**, or **bun**
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/portfolio.git
+cd portfolio
+
+# Install dependencies
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open **[http://localhost:3000](http://localhost:3000)** — the app hot-reloads via Turbopack.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Design System
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Token | Value | Usage |
+| :--- | :--- | :--- |
+| `--background` | `#080808` | Page background |
+| `--foreground` | `#ffffff` | Primary text |
+| `--accent` | `#DDF247` | CTA buttons, highlights, glow effects |
+| `--glass-bg` | `rgba(0,0,0,0.7)` | Glassmorphism panels |
+| `--border` | `rgba(255,255,255,0.08)` | Subtle dividers |
+| `--card-bg` | `#111112` | Card surfaces |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Custom Utilities
 
-## Deploy on Vercel
+- **`.glassmorphism`** — Frosted glass with `blur(40px)` + saturated backdrop
+- **`.liquid-glass`** — High-refraction glass effect with inner glow
+- **`.bento-card`** — Hover-lift card with border transition
+- **`.text-gradient`** — White-to-slate gradient text
+- **`.noise-bg`** — Animated film grain overlay
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌐 Deployment
+
+Deploy instantly on [**Vercel**](https://vercel.com/new?utm_medium=default-template&filter=next.js):
+
+```bash
+npx vercel
+```
+
+Or connect your GitHub repo for automatic deployments on every push.
+
+---
+
+## 📄 License
+
+This project is private and not licensed for redistribution.
+
+---
+
+<div align="center">
+
+**Crafted with precision by [Nur Mohammad Sujon](https://github.com/your-username)**
+
+*© 2026 · Dhaka, Bangladesh*
+
+</div>
