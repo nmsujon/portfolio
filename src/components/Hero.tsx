@@ -18,16 +18,28 @@ export default function Hero() {
         {/* Left Side: Content (7 cols) */}
         <div className="lg:col-span-7 flex flex-col items-start text-left space-y-8 order-2 lg:order-1">
           
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-xs uppercase tracking-widest"
+          >
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            HI, I&apos;M NM SUJON 👋
+          </motion.div>
+
           <div className="relative">
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-[100px] font-black tracking-tighter leading-[0.85] text-white flex flex-col"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-[88px] font-black tracking-tighter leading-[0.9] text-white flex flex-col"
             >
-              <span>WE BAKE</span>
-              <span className="text-accent">DIGITAL</span>
-              <span>PRODUCTS</span>
+              <span>CREATIVE</span>
+              <span className="text-accent">UI/UX DESIGNER</span>
+              <span className="text-zinc-400 text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-bold tracking-tight mt-2">
+                2 YEARS EXPERIENCE
+              </span>
             </motion.h1>
           </div>
 
@@ -35,22 +47,28 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-zinc-400 text-sm md:text-base max-w-xl leading-relaxed font-semibold"
+            className="text-zinc-400 text-sm md:text-base max-w-xl leading-relaxed font-medium"
           >
-            Engineered for the 2026 landscape. We combine industrial-grade code with high-sugar design aesthetics to deliver products that dominate markets.
+            I craft intuitive, human-centric digital interfaces and high-fidelity user experiences that turn complex ideas into elegant, impactful products.
           </motion.p>
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="pt-2"
+            className="pt-2 flex flex-wrap gap-4"
           >
             <button 
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
               className="px-8 py-4 bg-accent hover:bg-white text-black font-black text-xs uppercase tracking-widest transition-all duration-300 flex items-center gap-2 cursor-pointer shadow-lg shadow-accent/10"
             >
-              START BAKING NOW &rarr;
+              GET IN TOUCH &rarr;
+            </button>
+            <button 
+              onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+              className="px-8 py-4 border border-white/20 hover:border-white text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 flex items-center gap-2 cursor-pointer"
+            >
+              VIEW PROJECTS
             </button>
           </motion.div>
         </div>
@@ -68,22 +86,22 @@ export default function Hero() {
             99.8% SATISFACTION
           </motion.div>
 
-          <div className="relative w-80 h-80 sm:w-[400px] sm:h-[400px] lg:w-[460px] lg:h-[460px] flex items-center justify-center">
+          <div className="relative w-full max-w-[560px] h-[480px] sm:h-[580px] lg:h-[660px] flex items-center justify-center">
             
-            {/* Radial glow directly behind the person */}
-            <div className="absolute inset-0 bg-accent/25 rounded-full blur-[70px] scale-90 pointer-events-none" />
+            {/* Soft radial glow directly behind the person */}
+            <div className="absolute inset-0 bg-accent/20 rounded-full blur-[100px] scale-95 pointer-events-none" />
 
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="relative w-full h-full flex items-end justify-center"
+              className="relative w-full h-full flex items-end justify-center [mask-image:linear-gradient(to_bottom,black_65%,transparent_96%)]"
             >
               <Image 
-                src="/assets/designer1.png" 
-                alt="Nur Mohammad Sujon" 
+                src="/assets/my1.png" 
+                alt="NM Sujon" 
                 fill
-                className="object-contain z-10"
+                className="object-contain object-bottom z-10"
                 priority
               />
             </motion.div>
@@ -93,11 +111,11 @@ export default function Hero() {
               initial={{ opacity: 0, x: -30, y: 20 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 0.6, type: "spring" }}
-              className="absolute -bottom-4 left-0 bg-accent text-black p-5 px-6 flex flex-col items-start min-w-[155px] shadow-2xl z-20"
+              className="absolute bottom-4 left-0 bg-accent text-black p-5 px-6 flex flex-col items-start min-w-[155px] shadow-2xl z-30"
             >
-              <span className="text-3xl md:text-4xl font-black tracking-tighter leading-none">1.3K+</span>
+              <span className="text-3xl md:text-4xl font-black tracking-tighter leading-none">50+</span>
               <span className="text-[9px] font-black uppercase tracking-widest mt-1 text-black/80 leading-tight">
-                Projects Delivered
+                Projects Completed
               </span>
             </motion.div>
 

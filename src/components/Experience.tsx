@@ -5,22 +5,16 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    company: "Global Tech Solutions",
-    role: "Lead UI/UX Designer",
-    period: "2020 - Present",
-    description: "Spearheading design systems and user experience strategy for enterprise-scale platforms. Managing a team of designers to deliver high-impact digital products.",
-  },
-  {
-    company: "Creative Vision Studio",
-    role: "Senior Product Designer",
-    period: "2016 - 2020",
-    description: "Designed end-to-end user journeys for mobile and web applications, focusing on conversion optimization and user engagement.",
-  },
-  {
-    company: "Innovate Digital",
+    company: "Creative Digital Studio",
     role: "UI/UX Designer",
-    period: "2013 - 2016",
-    description: "Started the professional journey by creating intuitive interfaces and conducting user research for startups and local businesses.",
+    period: "2024 - Present",
+    description: "Designing modern web applications, mobile interfaces, and design systems. Conducting user testing, wireframing, and interactive prototyping for diverse client projects.",
+  },
+  {
+    company: "Innovate Design Agency",
+    role: "Junior Product & UI Designer",
+    period: "2023 - 2024",
+    description: "Crafted clean dashboard interfaces, mobile app concepts, and landing page layouts focusing on visual aesthetics, usability, and design consistency.",
   },
 ];
 

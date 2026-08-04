@@ -4,10 +4,10 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const stats = [
-  { label: "Years Experience", value: "10+" },
-  { label: "Projects Completed", value: "150+" },
-  { label: "Global Clients", value: "100+" },
-  { label: "Design Awards", value: "25+" },
+  { label: "Years Experience", value: "2+" },
+  { label: "Projects Completed", value: "50+" },
+  { label: "Satisfied Clients", value: "30+" },
+  { label: "Design Prototypes", value: "80+" },
 ];
 
 export default function About() {
@@ -25,19 +25,19 @@ export default function About() {
           >
             <div className="space-y-4">
               <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
-                A DECADE OF DESIGN
+                PASSIONATE ABOUT DESIGN
               </h2>
               <p className="text-slate-400 font-bold uppercase tracking-widest text-[10px]">
-                Architecting Digital Excellence & Human-Centric Experiences
+                Architecting Human-Centric Experiences & High-Fidelity UI
               </p>
               <div className="w-12 h-1 bg-slate-400" />
             </div>
 
             <p className="text-zinc-400 text-lg leading-relaxed">
-              Hello! I'm <span className="text-white">Nur Mohammad Sujon</span>, a <span className="text-slate-400">Lead UI/UX Designer</span> with over 10 years of experience in crafting high-impact digital solutions. I specialize in bridging the gap between complex business requirements and intuitive user experiences.
+              Hello! I&apos;m <span className="text-white">NM Sujon</span>, a dedicated <span className="text-accent">UI/UX Designer</span> with 2 years of professional experience in crafting high-impact digital solutions. I specialize in bridging user needs with business goals through intuitive, aesthetically compelling interface design.
             </p>
             <p className="text-zinc-400 text-lg leading-relaxed">
-              Throughout my decade-long journey, I've led design teams, architected global design systems, and collaborated with world-class brands to transform their digital presence into measurable success.
+              In my 2-year design journey, I&apos;ve built responsive web applications, mobile app UI/UX, interactive design systems, and wireframes that transform ideas into seamless digital experiences.
             </p>
           </motion.div>
 

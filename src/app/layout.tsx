@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nur Mohammad Sujon | Portfolio",
-  description: "UI/UX Designer based in Dhaka, Bangladesh. Crafting user-centric digital experiences.",
+  title: "NM Sujon | UI/UX Designer Portfolio",
+  description: "NM Sujon - UI/UX Designer with 2 years of experience crafting intuitive, human-centered digital experiences and sleek interfaces.",
 };
 
 export default function RootLayout({
