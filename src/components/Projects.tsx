@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Play, Apple } from "lucide-react";
+import { Play, Apple, ArrowUpRight } from "lucide-react";
 
 interface Project {
   id: string;
@@ -165,11 +165,14 @@ export default function Projects() {
                 <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-medium">
                   {p1.desc}
                 </p>
-                <div className="flex gap-3 pt-2">
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer">
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-accent hover:bg-white text-black text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer rounded-sm group/btn shadow-sm">
+                    View Case Study <ArrowUpRight size={12} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                  </button>
+                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
                     <Play size={10} fill="currentColor" /> Play Store
                   </button>
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer">
+                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
                     <Apple size={10} /> App Store
                   </button>
                 </div>
@@ -224,11 +227,14 @@ export default function Projects() {
                 <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-medium">
                   {p3.desc}
                 </p>
-                <div className="flex gap-3 pt-2">
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer">
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-accent hover:bg-white text-black text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer rounded-sm group/btn shadow-sm">
+                    View Case Study <ArrowUpRight size={12} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                  </button>
+                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
                     <Play size={10} fill="currentColor" /> Play Store
                   </button>
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer">
+                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
                     <Apple size={10} /> App Store
                   </button>
                 </div>
@@ -295,11 +301,14 @@ export default function Projects() {
                 <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-medium">
                   {p2.desc}
                 </p>
-                <div className="flex gap-3 pt-2">
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer">
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-accent hover:bg-white text-black text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer rounded-sm group/btn shadow-sm">
+                    View Case Study <ArrowUpRight size={12} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                  </button>
+                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
                     <Play size={10} fill="currentColor" /> Play Store
                   </button>
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer">
+                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
                     <Apple size={10} /> App Store
                   </button>
                 </div>
@@ -361,11 +370,14 @@ export default function Projects() {
                 <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-medium">
                   {p4.desc}
                 </p>
-                <div className="flex gap-3 pt-2">
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer">
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-accent hover:bg-white text-black text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer rounded-sm group/btn shadow-sm">
+                    View Case Study <ArrowUpRight size={12} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                  </button>
+                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
                     <Play size={10} fill="currentColor" /> Play Store
                   </button>
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer">
+                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
                     <Apple size={10} /> App Store
                   </button>
                 </div>
@@ -460,12 +472,15 @@ export default function Projects() {
                   {proj.desc}
                 </p>
 
-                {/* Play/App Store buttons */}
-                <div className="flex gap-2.5 pt-1">
-                  <button className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[8px] font-black text-white uppercase tracking-widest transition-all cursor-pointer">
+                {/* Action buttons */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <button className="flex items-center gap-1 px-2.5 py-1.5 bg-accent hover:bg-white text-black text-[8px] font-black uppercase tracking-widest transition-all cursor-pointer rounded-sm group/btn shadow-sm">
+                    View Case Study <ArrowUpRight size={10} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                  </button>
+                  <button className="flex items-center gap-1 px-2.5 py-1.5 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[8px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
                     <Play size={9} fill="currentColor" /> Play Store
                   </button>
-                  <button className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[8px] font-black text-white uppercase tracking-widest transition-all cursor-pointer">
+                  <button className="flex items-center gap-1 px-2.5 py-1.5 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[8px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
                     <Apple size={9} /> App Store
                   </button>
                 </div>
