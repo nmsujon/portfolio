@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require(path.join(process.cwd(), 'node_modules/sharp'));
 
-const origPath = path.join(process.cwd(), 'public/assets/my1_original.png');
+const origPath = 'C:/Users/df/.gemini/antigravity/brain/cede3674-0c22-49ee-a962-9925ecd8c2a0/.user_uploaded/media_1785868781937.png';
 const outputPath = path.join(process.cwd(), 'public/assets/my1.png');
 
 async function processImage() {
@@ -13,13 +13,13 @@ async function processImage() {
       .toBuffer({ resolveWithObject: true });
 
     const { width, height, channels } = info;
-    console.log(`Processing image: ${width}x${height}, channels: ${channels}`);
+    console.log(`Processing original clean image: ${width}x${height}`);
 
     const outputBuffer = Buffer.from(data);
 
-    // Fade starts lower down at 60% height and reaches 0 opacity at 88% height
-    const fadeStart = height * 0.60;
-    const fadeEnd = height * 0.88;
+    // Fade starts at 68% height and reaches 0 opacity at 95% height
+    const fadeStart = height * 0.68;
+    const fadeEnd = height * 0.95;
 
     for (let y = 0; y < height; y++) {
       let bottomAlphaFactor = 1.0;
@@ -28,54 +28,34 @@ async function processImage() {
         bottomAlphaFactor = 0.0;
       } else if (y > fadeStart) {
         const progress = (y - fadeStart) / (fadeEnd - fadeStart);
-        // Smooth cubic ease-out fade curve
         bottomAlphaFactor = Math.pow(1 - progress, 2);
       }
 
       for (let x = 0; x < width; x++) {
         const idx = (y * width + x) * 4;
-        const r = data[idx];
-        const g = data[idx + 1];
-        const b = data[idx + 2];
         let a = data[idx + 3];
 
-        // Background removal logic
-        const minVal = Math.min(r, g, b);
-        const maxVal = Math.max(r, g, b);
-        const diff = maxVal - minVal;
-
-        const isWhiteBg = minVal > 220 && diff < 25;
-        const isNearWhite = minVal > 190 && diff < 35;
-
-        if (isWhiteBg) {
-          a = 0;
-        } else if (isNearWhite) {
-          const alphaRatio = Math.max(0, (230 - minVal) / 40);
-          a = Math.floor(a * alphaRatio);
-        }
-
-        // Apply bottom vertical fade
+        // Apply ONLY bottom vertical fade mask to alpha
         a = Math.floor(a * bottomAlphaFactor);
 
         outputBuffer[idx + 3] = a;
       }
     }
 
-    const tempPath = path.join(process.cwd(), 'public/assets/my1_processed.png');
     await sharp(outputBuffer, {
-      raw: {
-        width,
-        height,
-        channels: 4
-      }
+      raw: { width, height, channels: 4 }
     })
     .png()
-    .toFile(tempPath);
+    .toFile(outputPath);
 
-    fs.copyFileSync(tempPath, outputPath);
-    console.log('Successfully updated my1.png with lower fade start (more torso visible)!');
+    // Copy to all asset aliases
+    fs.copyFileSync(outputPath, path.join(process.cwd(), 'public/assets/designer1.png'));
+    fs.copyFileSync(outputPath, path.join(process.cwd(), 'public/assets/1.png'));
+    fs.copyFileSync(outputPath, path.join(process.cwd(), 'public/assets/my_1.png'));
+
+    console.log('PERFECT! Updated my1.png without touching shirt colors!');
   } catch (err) {
-    console.error('Error processing image:', err);
+    console.error('Error:', err);
   }
 }
 
