@@ -101,6 +101,7 @@ export default function Hero() {
                 src="/assets/my1.png" 
                 alt="NM Sujon" 
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
                 className="object-contain object-bottom z-10"
                 priority
               />
