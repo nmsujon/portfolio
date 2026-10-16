@@ -65,7 +65,7 @@ export default function Navbar() {
           isScrolled ? "py-1" : "py-0"
         }`}
       >
-        <div className="glassmorphism rounded-full px-3 py-2 flex items-center justify-between md:justify-start gap-1 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border border-white/10 backdrop-blur-xl bg-black/60">
+        <div className="glassmorphism rounded-full px-3 py-2 flex items-center justify-between gap-1 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border border-white/10 backdrop-blur-xl bg-black/60">
           
           {/* Logo */}
           <div
@@ -87,9 +87,9 @@ export default function Navbar() {
 
           <div className="hidden md:block h-4 w-[1px] bg-white/10 mx-2" />
 
-          {/* Desktop Nav Items */}
+          {/* Desktop Nav Items — centered */}
           <div
-            className="hidden md:flex items-center relative"
+            className="hidden md:flex flex-1 items-center justify-center relative"
             onMouseLeave={() => setHoveredIndex(null)}
           >
             {navItems.map((item, index) => {
