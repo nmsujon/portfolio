@@ -83,9 +83,6 @@ export default function Navbar() {
                 className="object-contain scale-[1.6] origin-center"
               />
             </div>
-            <span className="hidden sm:inline-block text-xs font-black text-white tracking-wider uppercase">
-              NM SUJON
-            </span>
           </div>
 
           <div className="hidden md:block h-4 w-[1px] bg-white/10 mx-2" />
