@@ -81,7 +81,7 @@ export default function Hero() {
             initial={{ opacity: 0, rotate: 0, scale: 0.8 }}
             animate={{ opacity: 1, rotate: 12, scale: 1 }}
             transition={{ delay: 0.5, type: "spring" }}
-            className="absolute -top-12 right-12 bg-transparent border border-accent/40 text-accent font-black text-[9px] px-3.5 py-1.5 uppercase tracking-widest rounded-sm z-30"
+            className="absolute top-8 right-12 bg-transparent border border-accent/40 text-accent font-black text-[9px] px-3.5 py-1.5 uppercase tracking-widest rounded-sm z-30"
           >
             99.8% SATISFACTION
           </motion.div>
@@ -114,7 +114,7 @@ export default function Hero() {
               transition={{ delay: 0.6, type: "spring" }}
               className="absolute bottom-4 left-0 bg-accent text-black p-5 px-6 flex flex-col items-start min-w-[155px] shadow-2xl z-30"
             >
-              <span className="text-3xl md:text-4xl font-black tracking-tighter leading-none">50+</span>
+              <span className="text-3xl md:text-4xl font-black tracking-tighter leading-none">30+</span>
               <span className="text-[9px] font-black uppercase tracking-widest mt-1 text-black/80 leading-tight">
                 Projects Completed
               </span>
