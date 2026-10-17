@@ -18,6 +18,16 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: "pokelive",
+    title: "PokéLive",
+    year: "2026",
+    desc: "Live stream shopping marketplace — browse live sellers across categories, watch real-time product demos, and check out in one tap. End-to-end mobile app design: home feed, category filters, seller hub, cart, and profile flows.",
+    pill: "Live Commerce",
+    tags: ["UI/UX Design", "App Design"],
+    image: "/assets/pokelive-app.png",
+    mockupType: "pokelive"
+  },
+  {
     id: "instasign",
     title: "InstaSignTracker",
     year: "2025",
@@ -34,17 +44,8 @@ const projects: Project[] = [
     pill: "Mobile App",
     tags: ["UI/UX Design", "UX Research"],
     mockupType: "allrounder"
-  },
-  {
-    id: "pokelive",
-    title: "PokéLive",
-    year: "2026",
-    desc: "Live stream shopping marketplace — browse live sellers across categories, watch real-time product demos, and check out in one tap. End-to-end mobile app design: home feed, category filters, seller hub, cart, and profile flows.",
-    pill: "Live Commerce",
-    tags: ["UI/UX Design", "App Design"],
-    image: "/assets/pokelive-app.png",
-    mockupType: "pokelive"
   }
+
 ];
 
 function ProjectCard({ project, wide = false }: { project: Project; wide?: boolean }) {
@@ -57,7 +58,7 @@ function ProjectCard({ project, wide = false }: { project: Project; wide?: boole
       className="w-full flex flex-col space-y-6 group"
     >
       {/* Card Image Area */}
-      <div className={`relative w-full overflow-hidden bg-black border border-[#575757] flex items-center justify-center transition-all duration-500 hover:border-accent/30 rounded-lg ${wide ? "h-[420px] lg:h-[480px]" : "h-[380px] lg:h-auto lg:aspect-[1.15/1]"}`}>
+      <div className={`relative w-full overflow-hidden bg-black border border-[#575757] flex items-center justify-center transition-all duration-500 hover:border-accent/30 rounded-lg ${wide ? "h-[380px] lg:h-[420px]" : "h-[380px] lg:h-auto lg:aspect-[1.15/1]"}`}>
         <div className="absolute top-6 left-6 z-20">
           <span className="border border-accent bg-black text-accent text-[9px] font-black px-2.5 py-1 rounded-sm uppercase tracking-wider">
             {project.pill}
