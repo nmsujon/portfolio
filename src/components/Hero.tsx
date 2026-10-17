@@ -86,7 +86,7 @@ export default function Hero() {
             2+ YEARS EXPERIENCE
           </motion.div>
 
-          <div className="relative w-80 h-80 sm:w-[400px] sm:h-[400px] lg:w-[460px] lg:h-[460px] flex items-center justify-center">
+          <div className="relative w-full max-w-[560px] h-[480px] sm:h-[580px] lg:h-[660px] flex items-center justify-center">
             
             {/* Soft radial glow directly behind the person */}
             <div className="absolute inset-0 bg-accent/20 rounded-full blur-[100px] scale-95 pointer-events-none" />
