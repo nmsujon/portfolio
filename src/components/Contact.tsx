@@ -3,13 +3,13 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Send, X, Globe, MessageSquare, CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
-import { Github, Linkedin, Twitter } from "./Icons";
+import { Linkedin, Dribbble } from "./Icons";
 
 const servicesList = [
   "Product Design",
   "UI/UX Audit",
   "Design Systems",
-  "AI Integration",
+  "Mobile App Design",
 ];
 
 export default function Contact() {
@@ -66,7 +66,7 @@ export default function Contact() {
             className="relative z-10 flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[9px] font-black uppercase tracking-widest mb-8"
           >
             <span className="w-1.5 h-1.5 bg-accent rounded-full animate-ping" />
-            <span>Available for Q3-Q4 2026 Projects</span>
+            <span>Open to Full-Time Roles</span>
           </motion.div>
 
           {/* Content */}
@@ -77,7 +77,7 @@ export default function Contact() {
             </h2>
             
             <p className="text-zinc-400 text-xs sm:text-sm md:text-base leading-relaxed max-w-lg mx-auto font-medium">
-              Pick a service you need help with, and let’s start collaborating to bake high-fidelity user experiences.
+              Pick a service you need help with, and let’s start collaborating to craft high-fidelity user experiences.
             </p>
 
             {/* Service selector chips in banner */}
@@ -201,7 +201,7 @@ export default function Contact() {
                           value={formData.message}
                           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                           className="w-full h-32 bg-white/5 border border-white/5 rounded-lg p-3.5 text-xs text-white focus:outline-none focus:border-accent focus:bg-white/[0.07] transition-all resize-none" 
-                          placeholder="Tell me briefly about what you want to bake..."
+                          placeholder="Tell me briefly about your project or role..."
                         />
                       </div>
 
@@ -217,14 +217,14 @@ export default function Contact() {
                     {/* Direct Contact Info */}
                     <div className="pt-6 border-t border-white/5 flex flex-wrap justify-between items-center gap-4">
                       <div className="flex gap-4">
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-accent transition-colors">
+                        <a href="https://linkedin.com/in/nur-mohammad-sujon-622136332" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-accent transition-colors">
                           <Linkedin size={16} />
                         </a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-accent transition-colors">
-                          <Twitter size={16} />
+                        <a href="https://dribbble.com/nm_sujon" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-accent transition-colors">
+                          <Dribbble size={16} />
                         </a>
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-accent transition-colors">
-                          <Github size={16} />
+                        <a href="mailto:nsujon872@gmail.com" className="text-zinc-500 hover:text-accent transition-colors">
+                          <Mail size={16} />
                         </a>
                       </div>
                       <span className="flex items-center gap-1.5 text-[9px] text-zinc-400 font-black uppercase tracking-widest">

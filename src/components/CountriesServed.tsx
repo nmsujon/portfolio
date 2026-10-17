@@ -2,31 +2,12 @@
 
 import React from "react";
 
-// 19 pulsing location markers positioned exactly on the detailed world map coordinate system
+// Client locations: Bangladesh (home), Germany, Jamaica, US
 const locationDots = [
-  { id: "na-alaska", cx: 100, cy: 320, r: 5 },
-  { id: "na-canada", cx: 240, cy: 300, r: 5 },
-  { id: "na-east", cx: 250, cy: 350, r: 5 },
-  { id: "na-south", cx: 200, cy: 380, r: 5 },
-  { id: "sa-north", cx: 260, cy: 480, r: 5 },
-  
-  { id: "eu-west", cx: 410, cy: 350, r: 5 },
-  { id: "eu-north", cx: 460, cy: 310, r: 5 },
-  
-  { id: "af-west", cx: 440, cy: 510, r: 5 },
-  { id: "af-south", cx: 510, cy: 610, r: 5 },
-  
-  { id: "as-russia", cx: 580, cy: 310, r: 5 },
-  { id: "as-mideast", cx: 530, cy: 450, r: 5 },
-  { id: "as-india", cx: 600, cy: 460, r: 5 },
-  { id: "as-china", cx: 670, cy: 390, r: 5 },
-  { id: "as-japan", cx: 720, cy: 370, r: 5 },
-  { id: "as-singapore", cx: 660, cy: 510, r: 5 },
-  { id: "as-indonesia", cx: 700, cy: 530, r: 5 },
-  { id: "as-philippines", cx: 710, cy: 490, r: 5 },
-  
-  { id: "au-west", cx: 690, cy: 620, r: 4.5 },
-  { id: "au-east", cx: 740, cy: 640, r: 4.5 },
+  { id: "bd-dhaka", cx: 608, cy: 462, r: 5 },
+  { id: "de-germany", cx: 468, cy: 332, r: 5 },
+  { id: "jm-jamaica", cx: 212, cy: 428, r: 5 },
+  { id: "us-east", cx: 252, cy: 352, r: 5 },
 ];
 
 export default function CountriesServed() {
@@ -338,11 +319,11 @@ export default function CountriesServed() {
         {/* Right Side: Heading & Subtitle (7 cols) */}
         <div className="lg:col-span-7 flex flex-col justify-center text-left space-y-4 pl-0 lg:pl-8">
           <h2 className="text-4xl md:text-5xl lg:text-[52px] font-black tracking-tight text-accent leading-none">
-            110+ COUNTRIES SERVED
+            DESIGNING ACROSS BORDERS
           </h2>
           
           <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-bold tracking-[0.18em] uppercase max-w-xl">
-            BRIFGING INNOVATION ACROSS BORDERS,FROM SAN FRANSISCO TO SINGAPORE
+            FROM DHAKA TO GERMANY, JAMAICA &amp; THE US
           </p>
         </div>
 

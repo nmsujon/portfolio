@@ -5,16 +5,16 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    company: "Creative Digital Studio",
+    company: "Spark Tech Agency — Dhaka, Bangladesh",
     role: "UI/UX Designer",
-    period: "2024 - Present",
-    description: "Designing modern web applications, mobile interfaces, and design systems. Conducting user testing, wireframing, and interactive prototyping for diverse client projects.",
+    period: "11/2024 - 10/2026",
+    description: "Led product design for 25+ web & mobile products for global clients across Germany, Jamaica, and the US. Architected complex B2B SaaS workflows, telemedicine booking flows, and live-commerce checkout. Built scalable Figma design systems with design tokens and WCAG accessibility, collaborating directly with engineers for pixel-perfect handoffs.",
   },
   {
-    company: "Innovate Design Agency",
-    role: "Junior Product & UI Designer",
-    period: "2023 - 2024",
-    description: "Crafted clean dashboard interfaces, mobile app concepts, and landing page layouts focusing on visual aesthetics, usability, and design consistency.",
+    company: "Spark Tech Agency — Dhaka, Bangladesh",
+    role: "UI/UX Intern",
+    period: "08/2024 - 11/2024",
+    description: "Designed responsive wireframes, user flows, and interactive prototypes for international client projects. Conducted usability testing and user research to eliminate navigation bottlenecks and improve task completion speed.",
   },
 ];
 

@@ -2,13 +2,13 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Instagram } from "@/components/Icons";
+import { Mail } from "lucide-react";
+import { Linkedin, Dribbble } from "@/components/Icons";
 
 const socials = [
-  { icon: Github, href: "https://github.com" },
-  { icon: Linkedin, href: "https://linkedin.com" },
-  { icon: Twitter, href: "https://twitter.com" },
-  { icon: Instagram, href: "https://instagram.com" },
+  { icon: Linkedin, href: "https://linkedin.com/in/nur-mohammad-sujon-622136332" },
+  { icon: Dribbble, href: "https://dribbble.com/nm_sujon" },
+  { icon: Mail, href: "mailto:nsujon872@gmail.com" },
 ];
 
 export default function SocialBar() {

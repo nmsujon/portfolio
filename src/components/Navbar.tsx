@@ -138,15 +138,17 @@ export default function Navbar() {
           <div className="hidden md:block h-4 w-[1px] bg-white/10 mx-2 ml-auto" />
 
           {/* Desktop CTA Resume */}
-          <motion.button
+          <motion.a
+            href="/Nur_Mohammad_Sujon_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => handleNavClick("contact")}
             className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-black font-black text-[10px] uppercase tracking-widest hover:bg-white transition-colors duration-300 cursor-pointer shadow-lg shadow-accent/10"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Resume</span>
-          </motion.button>
+          </motion.a>
 
           {/* Mobile Right Controls */}
           <div className="flex md:hidden items-center gap-2">
@@ -211,12 +213,15 @@ export default function Navbar() {
             </div>
 
             <div className="pt-2 border-t border-white/10">
-              <button
-                onClick={() => handleNavClick("contact")}
+              <a
+                href="/Nur_Mohammad_Sujon_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-3 bg-white text-black font-black text-xs uppercase tracking-widest rounded-2xl flex items-center justify-center gap-2 cursor-pointer shadow-lg"
               >
                 <Download size={14} /> Download Resume
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

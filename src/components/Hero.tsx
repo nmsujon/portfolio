@@ -83,7 +83,7 @@ export default function Hero() {
             transition={{ delay: 0.5, type: "spring" }}
             className="absolute top-8 right-12 bg-transparent border border-accent/40 text-accent font-black text-[9px] px-3.5 py-1.5 uppercase tracking-widest rounded-sm z-30"
           >
-            99.8% SATISFACTION
+            2+ YEARS EXPERIENCE
           </motion.div>
 
           <div className="relative w-full max-w-[560px] h-[480px] sm:h-[580px] lg:h-[660px] flex items-center justify-center">

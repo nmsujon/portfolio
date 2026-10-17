@@ -2,32 +2,32 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Building2, Cpu, Heart, Layers } from "lucide-react";
+import { Smartphone, Monitor, Layers, PenTool } from "lucide-react";
 
 const categories = [
   {
     num: "01",
-    icon: Building2,
-    title: "BUSINESS",
-    desc: "Enterprise architecture and scalable data solutions for 2026 growth.",
+    icon: Smartphone,
+    title: "MOBILE DESIGN",
+    desc: "Intuitive iOS & Android app experiences — from user flows to polished, high-fidelity interfaces.",
   },
   {
     num: "02",
-    icon: Cpu,
-    title: "AI FOCUS",
-    desc: "Large language model integration and custom neural processing nodes.",
+    icon: Monitor,
+    title: "WEB & SAAS",
+    desc: "Complex B2B SaaS workflows and dashboards translated into clear, usable web products.",
   },
   {
     num: "03",
-    icon: Heart,
-    title: "LIFESTYLE",
-    desc: "Consumer-centric applications with habit-forming design loops.",
+    icon: Layers,
+    title: "DESIGN SYSTEMS",
+    desc: "Scalable Figma component libraries with design tokens and WCAG accessibility baked in.",
   },
   {
     num: "04",
-    icon: Layers,
-    title: "PRODUCT",
-    desc: "Full-cycle product design from whiteboarding to market dominance.",
+    icon: PenTool,
+    title: "PROTOTYPING",
+    desc: "Interactive prototypes and usability testing that validate ideas before a line of code.",
   },
 ];
 

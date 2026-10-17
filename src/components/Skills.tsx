@@ -2,21 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Figma, Framer } from "@/components/Icons";
-import { Palette, Layout, MousePointer2, Zap, Search, PenTool } from "lucide-react";
-
-const tools = [
-  "Figma", "Framer", "Adobe XD", "Photoshop", "Illustrator", "After Effects", "Webflow", "React", "Next.js", "Tailwind"
-];
-
-const competencies = [
-  { icon: Search, title: "User Research", desc: "Understanding behavior patterns and pain points." },
-  { icon: Layout, title: "Wireframing", desc: "Building the skeletal structure of digital products." },
-  { icon: MousePointer2, title: "Prototyping", desc: "Creating interactive flows for testing and validation." },
-  { icon: Palette, title: "Visual Design", desc: "Crafting beautiful, brand-aligned interfaces." },
-  { icon: Zap, title: "Interaction Design", desc: "Designing micro-animations and state transitions." },
-  { icon: PenTool, title: "Design Systems", desc: "Creating scalable and consistent component libraries." },
-];
 
 export default function Skills() {
   return (
@@ -38,15 +23,15 @@ export default function Skills() {
           {[
             {
               category: "Design Tools",
-              skills: ["Figma", "Framer", "Adobe XD", "Photoshop", "Illustrator", "After Effects"]
+              skills: ["Figma", "FigJam", "Adobe XD", "Photoshop", "Illustrator"]
             },
             {
-              category: "Web Technologies",
-              skills: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS", "Framer Motion"]
+              category: "UI/UX Expertise",
+              skills: ["User Research", "Wireframing", "Prototyping", "Design Systems", "Information Architecture", "WCAG Accessibility", "Responsive UI"]
             },
             {
-              category: "Core Principles",
-              skills: ["User Research", "Wireframing", "Prototyping", "Visual Design", "Design Systems", "Usability Testing"]
+              category: "Workflow",
+              skills: ["Developer Handoff", "Design Tokens", "Jira", "Notion", "Agile/Scrum"]
             }
           ].map((cat, idx) => (
             <motion.div

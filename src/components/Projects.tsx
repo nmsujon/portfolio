@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Play, Apple, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 interface Project {
   id: string;
@@ -11,88 +12,169 @@ interface Project {
   desc: string;
   pill: string;
   tags: string[];
-  mockupType: "mon5majeur" | "celestial" | "football-tilted" | "clearsite" | "saharan" | "fitfuelz" | "gwaupp";
+  image?: string;
+  mockupType: "instasign" | "allrounder" | "pokelive";
 }
 
-const largeProjectsList: Project[] = [
+const projects: Project[] = [
   {
-    id: "mon5majeur",
-    title: "Mon5majeur",
-    year: "2026",
-    desc: "Track live football with AI-powered match predictions, real-time stats, and smart league analytics at your fingertips.",
-    pill: "AI Fintech",
-    tags: ["App Development", "UI/UX Design"],
-    mockupType: "mon5majeur"
+    id: "instasign",
+    title: "InstaSignTracker",
+    year: "2025",
+    desc: "End-to-end B2B SaaS operations tool for commercial signage companies — managing orders, production, and installation tracking in one streamlined workflow.",
+    pill: "B2B SaaS",
+    tags: ["UI/UX Design", "Design System"],
+    mockupType: "instasign"
   },
   {
-    id: "celestial",
-    title: "Football League",
-    year: "2026",
-    desc: "Track live football with AI-powered match predictions, real-time stats, and smart league analytics at your fingertips.",
-    pill: "AI Fintech",
-    tags: ["App Development", "UI/UX Design"],
-    mockupType: "celestial"
+    id: "allrounder",
+    title: "Allrounder Pro",
+    year: "2025",
+    desc: "Field-service task and shift management mobile app for a German scaffolding firm — designed for fast, glove-friendly on-site usability.",
+    pill: "Mobile App",
+    tags: ["UI/UX Design", "UX Research"],
+    mockupType: "allrounder"
   },
   {
-    id: "football",
-    title: "Football League",
+    id: "pokelive",
+    title: "PokéLive",
     year: "2026",
-    desc: "Track live football with AI-powered match predictions, real-time stats, and smart league analytics at your fingertips.",
-    pill: "AI Fintech",
-    tags: ["App Development", "UI/UX Design"],
-    mockupType: "football-tilted"
-  },
-  {
-    id: "clearsite",
-    title: "Clearsite",
-    year: "2026",
-    desc: "Track live football with AI-powered match predictions, real-time stats, and smart league analytics at your fingertips.",
-    pill: "AI Fintech",
-    tags: ["Web Development", "UI/UX Design"],
-    mockupType: "clearsite"
+    desc: "Live stream shopping marketplace — browse live sellers across categories, watch real-time product demos, and check out in one tap. End-to-end mobile app design: home feed, category filters, seller hub, cart, and profile flows.",
+    pill: "Live Commerce",
+    tags: ["UI/UX Design", "App Design"],
+    image: "/assets/pokelive-app.png",
+    mockupType: "pokelive"
   }
 ];
 
-const smallProjectsList: Project[] = [
-  {
-    id: "saharan",
-    title: "Saharan",
-    year: "2026",
-    desc: "Track live football with AI-powered match predictions, real-time stats, and smart league analytics at your fingertips.",
-    pill: "AI Fintech",
-    tags: ["App Development", "UI/UX Design"],
-    mockupType: "saharan"
-  },
-  {
-    id: "fitfuelz",
-    title: "Fitfuelz",
-    year: "2025",
-    desc: "Track live football with AI-powered match predictions, real-time stats, and smart league analytics at your fingertips.",
-    pill: "AI Fintech",
-    tags: ["App Development", "UI/UX Design"],
-    mockupType: "fitfuelz"
-  },
-  {
-    id: "gwaupp",
-    title: "GWAUPP",
-    year: "2026",
-    desc: "Track live football with AI-powered match predictions, real-time stats, and smart league analytics at your fingertips.",
-    pill: "AI Fintech",
-    tags: ["App Development", "UI/UX Design"],
-    mockupType: "gwaupp"
+function ProjectCard({ project, wide = false }: { project: Project; wide?: boolean }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="w-full flex flex-col space-y-6 group"
+    >
+      {/* Card Image Area */}
+      <div className={`relative w-full overflow-hidden bg-black border border-[#575757] flex items-center justify-center transition-all duration-500 hover:border-accent/30 rounded-lg ${wide ? "h-[420px] lg:h-[480px]" : "h-[380px] lg:h-auto lg:aspect-[1.15/1]"}`}>
+        <div className="absolute top-6 left-6 z-20">
+          <span className="border border-accent bg-black text-accent text-[9px] font-black px-2.5 py-1 rounded-sm uppercase tracking-wider">
+            {project.pill}
+          </span>
+        </div>
+
+        <CardBackdrop id={project.id} />
+
+        <div className="absolute bottom-6 left-6 z-20 flex gap-2">
+          {project.tags.map((tag, tIdx) => (
+            <span key={tIdx} className="border border-white/10 bg-black/60 text-white/80 text-[8px] font-semibold px-2 py-0.5 rounded-sm uppercase tracking-wider">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="absolute z-10 inset-0 flex items-center justify-center p-4 sm:p-6 transition-transform duration-500 group-hover:scale-[1.02]">
+          {project.image ? (
+            <div className="relative w-full h-full">
+              <Image
+                src={project.image}
+                alt={`${project.title} — app UI design`}
+                fill
+                className="object-contain"
+                sizes="(max-width: 1024px) 90vw, 1200px"
+              />
+            </div>
+          ) : (
+            <div className="absolute bottom-0 flex justify-center w-full transition-transform duration-500 group-hover:scale-105 scale-95 lg:scale-100">
+              <SmartphoneMockup type={project.mockupType} />
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Text Area */}
+      <div className="flex flex-col space-y-3 px-2">
+        <div className="flex items-center justify-between">
+          <h3 className="text-xl md:text-2xl font-black text-white group-hover:text-accent transition-colors">
+            {project.title}
+          </h3>
+          <span className="text-zinc-500 font-bold text-xs md:text-sm">{project.year}</span>
+        </div>
+        <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-medium">
+          {project.desc}
+        </p>
+        <div className="flex flex-wrap gap-3 pt-2">
+          <button className="flex items-center gap-1.5 px-3.5 py-2 bg-accent hover:bg-white text-black text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer rounded-sm group/btn shadow-sm">
+            View Case Study <ArrowUpRight size={12} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+          </button>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+/* Decorative card backdrops per project */
+function CardBackdrop({ id }: { id: string }) {
+  if (id === "instasign") {
+    return (
+      <div className="absolute inset-0 bg-[#080809] overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-orange-600/10 rounded-full blur-3xl pointer-events-none" />
+        <svg className="absolute inset-0 w-full h-full stroke-orange-500/10 stroke-[0.5] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="100%" x2="50%" y2="0" />
+          <line x1="100%" y1="100%" x2="50%" y2="0" />
+          <line x1="0" y1="50%" x2="50%" y2="0" />
+          <line x1="100%" y1="50%" x2="50%" y2="0" />
+        </svg>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(234,88,12,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(234,88,12,0.03)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+        <div className="absolute top-8 left-0 right-0 text-center pointer-events-none">
+          <span className="text-amber-600/30 text-xs md:text-sm font-black tracking-[0.4em] uppercase">INSTASIGN</span>
+        </div>
+        <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
+          <span className="text-white/30 text-[9px] font-bold tracking-[0.2em] uppercase">Operations Dashboard</span>
+        </div>
+      </div>
+    );
   }
-];
+  if (id === "allrounder") {
+    return (
+      <div className="absolute inset-0 bg-[#060607] overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-violet-600/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none font-sans text-white/5 text-[3.5rem] md:text-[4.5rem] font-black tracking-tight leading-none uppercase">
+          Allrounder
+        </div>
+        <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
+          <span className="text-white/30 text-[9px] font-bold tracking-[0.2em] uppercase">Field Workforce</span>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className="absolute inset-0 bg-[#0b0608] overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-rose-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(244,63,94,0.03)_1px,transparent_1px)] bg-[size:28px_100%] pointer-events-none" />
+      <div className="absolute top-8 left-0 right-0 text-center pointer-events-none">
+        <span className="text-rose-500/30 text-xs md:text-sm font-black tracking-[0.4em] uppercase">POKELIVE</span>
+      </div>
+      <div className="absolute top-6 right-6 z-20 pointer-events-none">
+        <span className="flex items-center gap-1.5 bg-rose-600 text-white text-[8px] font-black px-2.5 py-1 rounded-sm uppercase tracking-widest">
+          <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" /> Live
+        </span>
+      </div>
+      <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
+        <span className="text-white/30 text-[9px] font-bold tracking-[0.2em] uppercase">Live Shopping</span>
+      </div>
+    </div>
+  );
+}
 
 export default function Projects() {
-  const p1 = largeProjectsList[0];
-  const p2 = largeProjectsList[1];
-  const p3 = largeProjectsList[2];
-  const p4 = largeProjectsList[3];
+  const [p1, p2, p3] = projects;
 
   return (
     <section id="projects" className="py-24 bg-background px-6 md:px-12 lg:px-20 border-t border-white/5 overflow-hidden">
       <div className="max-w-[1440px] mx-auto space-y-16">
-        
+
         {/* Title Section */}
         <div className="flex items-center justify-center w-full relative py-6">
           <div className="h-[2px] bg-accent/80 flex-grow max-w-[20%] md:max-w-[30%] lg:max-w-[38%]" />
@@ -102,391 +184,19 @@ export default function Projects() {
           <div className="h-[2px] bg-accent/80 flex-grow max-w-[20%] md:max-w-[30%] lg:max-w-[38%]" />
         </div>
 
-        {/* 1. Large 12-Column Staggered Grid (Row 1 & 2) */}
+        {/* Staggered 12-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          
-          {/* Left Column (col-span-7) */}
-          <div className="col-span-12 lg:col-span-7 flex flex-col space-y-16 lg:space-y-24">
-            
-            {/* Project 1: Mon5majeur (Wide, Full Width in col-span-7) */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="w-full flex flex-col space-y-6 group"
-            >
-              {/* Card Image Area */}
-              <div className="relative w-full h-[380px] lg:h-auto lg:aspect-[1.25/1] overflow-hidden bg-black border border-[#575757] flex items-center justify-center transition-all duration-500 hover:border-accent/30 rounded-lg">
-                <div className="absolute top-6 left-6 z-20">
-                  <span className="border border-accent bg-black text-accent text-[9px] font-black px-2.5 py-1 rounded-sm uppercase tracking-wider">
-                    {p1.pill}
-                  </span>
-                </div>
-
-                <div className="absolute inset-0 bg-[#080809] overflow-hidden">
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-orange-600/10 rounded-full blur-3xl pointer-events-none" />
-                  <svg className="absolute inset-0 w-full h-full stroke-orange-500/10 stroke-[0.5] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="0" y1="100%" x2="50%" y2="0" />
-                    <line x1="100%" y1="100%" x2="50%" y2="0" />
-                    <line x1="0" y1="50%" x2="50%" y2="0" />
-                    <line x1="100%" y1="50%" x2="50%" y2="0" />
-                  </svg>
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(234,88,12,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(234,88,12,0.03)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
-                  <div className="absolute top-8 left-0 right-0 text-center pointer-events-none">
-                    <span className="text-amber-650/30 text-xs md:text-sm font-black tracking-[0.4em] uppercase">MON5MAJEUR</span>
-                  </div>
-                  <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
-                    <span className="text-white/30 text-[9px] font-bold tracking-[0.2em] uppercase">Overview</span>
-                  </div>
-                </div>
-
-                <div className="absolute bottom-6 left-6 z-20 flex gap-2">
-                  {p1.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="border border-white/10 bg-black/60 text-white/80 text-[8px] font-semibold px-2 py-0.5 rounded-sm uppercase tracking-wider">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="absolute z-10 flex justify-center w-full transition-transform duration-500 group-hover:scale-105 bottom-0 scale-95 lg:scale-100">
-                  <SmartphoneMockup type={p1.mockupType} />
-                </div>
-              </div>
-
-              {/* Text Area */}
-              <div className="flex flex-col space-y-3 px-2">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl md:text-2xl font-black text-white group-hover:text-accent transition-colors">
-                    {p1.title}
-                  </h3>
-                  <span className="text-zinc-500 font-bold text-xs md:text-sm">{p1.year}</span>
-                </div>
-                <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-medium">
-                  {p1.desc}
-                </p>
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-accent hover:bg-white text-black text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer rounded-sm group/btn shadow-sm">
-                    View Case Study <ArrowUpRight size={12} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                  </button>
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
-                    <Play size={10} fill="currentColor" /> Play Store
-                  </button>
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
-                    <Apple size={10} /> App Store
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-            
-            {/* Project 3: Football League (Tilted, Width scaled to 5/12 of total grid container width) */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="w-full lg:w-[71.4%] flex flex-col space-y-6 group"
-            >
-              {/* Card Image Area */}
-              <div className="relative w-full h-[380px] lg:h-auto lg:aspect-[1.05/1] overflow-hidden bg-black border border-[#575757] flex items-center justify-center transition-all duration-500 hover:border-accent/30 rounded-lg">
-                <div className="absolute top-6 left-6 z-20">
-                  <span className="border border-accent bg-black text-accent text-[9px] font-black px-2.5 py-1 rounded-sm uppercase tracking-wider">
-                    {p3.pill}
-                  </span>
-                </div>
-
-                <div className="absolute inset-0 bg-[#050811] overflow-hidden">
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:28px_100%] pointer-events-none" />
-                  <div className="absolute top-6 right-6 pointer-events-none">
-                    <span className="text-zinc-500/80 text-[10px] font-black tracking-widest uppercase">Football League</span>
-                  </div>
-                </div>
-
-                <div className="absolute bottom-6 left-6 z-20 flex gap-2">
-                  {p3.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="border border-white/10 bg-black/60 text-white/80 text-[8px] font-semibold px-2 py-0.5 rounded-sm uppercase tracking-wider">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="absolute z-10 flex justify-center w-full transition-transform duration-500 group-hover:scale-105 bottom-[5%] rotate-[-10deg] scale-[0.85] lg:scale-90">
-                  <SmartphoneMockup type={p3.mockupType} />
-                </div>
-              </div>
-
-              {/* Text Area */}
-              <div className="flex flex-col space-y-3 px-2">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl md:text-2xl font-black text-white group-hover:text-accent transition-colors">
-                    {p3.title}
-                  </h3>
-                  <span className="text-zinc-500 font-bold text-xs md:text-sm">{p3.year}</span>
-                </div>
-                <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-medium">
-                  {p3.desc}
-                </p>
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-accent hover:bg-white text-black text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer rounded-sm group/btn shadow-sm">
-                    View Case Study <ArrowUpRight size={12} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                  </button>
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
-                    <Play size={10} fill="currentColor" /> Play Store
-                  </button>
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
-                    <Apple size={10} /> App Store
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-
+          <div className="col-span-12 lg:col-span-7 flex flex-col">
+            <ProjectCard project={p1} />
           </div>
-
-          {/* Right Column (col-span-5, Staggered offset lg:mt-24) */}
-          <div className="col-span-12 lg:col-span-5 flex flex-col space-y-16 lg:space-y-24 lg:mt-24">
-            
-            {/* Project 2: Football League (Celestial) (Narrow, Full Width in col-span-5) */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="w-full flex flex-col space-y-6 group"
-            >
-              {/* Card Image Area */}
-              <div className="relative w-full h-[380px] lg:h-auto lg:aspect-[1.05/1] overflow-hidden bg-black border border-[#575757] flex items-center justify-center transition-all duration-500 hover:border-accent/30 rounded-lg">
-                <div className="absolute top-6 left-6 z-20">
-                  <span className="border border-accent bg-black text-accent text-[9px] font-black px-2.5 py-1 rounded-sm uppercase tracking-wider">
-                    {p2.pill}
-                  </span>
-                </div>
-
-                <div className="absolute inset-0 bg-[#060607] overflow-hidden">
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-violet-600/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none font-serif text-white/5 text-[5rem] md:text-[6.5rem] tracking-tight leading-none">
-                    Celestial
-                  </div>
-                  <div 
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-[18%] pointer-events-none" 
-                    style={{
-                      clipPath: 'polygon(15% 0%, 25% 12%, 40% 6%, 58% 15%, 72% 4%, 88% 18%, 100% 100%, 0% 100%)',
-                      background: 'linear-gradient(to bottom, #3f3f46, #18181b 80%)',
-                    }}
-                  />
-                  <div className="absolute bottom-[14%] left-1/2 -translate-x-1/2 w-[110px] h-[12px] bg-black/70 blur-md rounded-full pointer-events-none" />
-                </div>
-
-                <div className="absolute bottom-6 left-6 z-20 flex gap-2">
-                  {p2.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="border border-white/10 bg-black/60 text-white/80 text-[8px] font-semibold px-2 py-0.5 rounded-sm uppercase tracking-wider">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="absolute z-10 flex justify-center w-full transition-transform duration-500 group-hover:scale-105 bottom-[14%] scale-90 lg:scale-95">
-                  <SmartphoneMockup type={p2.mockupType} />
-                </div>
-              </div>
-
-              {/* Text Area */}
-              <div className="flex flex-col space-y-3 px-2">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl md:text-2xl font-black text-white group-hover:text-accent transition-colors">
-                    {p2.title}
-                  </h3>
-                  <span className="text-zinc-500 font-bold text-xs md:text-sm">{p2.year}</span>
-                </div>
-                <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-medium">
-                  {p2.desc}
-                </p>
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-accent hover:bg-white text-black text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer rounded-sm group/btn shadow-sm">
-                    View Case Study <ArrowUpRight size={12} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                  </button>
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
-                    <Play size={10} fill="currentColor" /> Play Store
-                  </button>
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
-                    <Apple size={10} /> App Store
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Project 4: Clearsite (Wide, Width scaled to 7/12, translated -28.57% left to align right edge) */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="w-full lg:w-[140%] lg:-translate-x-[28.57%] flex flex-col space-y-6 group"
-            >
-              {/* Card Image Area */}
-              <div className="relative w-full h-[380px] lg:h-auto lg:aspect-[1.25/1] overflow-hidden bg-black border border-[#575757] flex items-center justify-center transition-all duration-500 hover:border-accent/30 rounded-lg">
-                <div className="absolute top-6 left-6 z-20">
-                  <span className="border border-accent bg-black text-accent text-[9px] font-black px-2.5 py-1 rounded-sm uppercase tracking-wider">
-                    {p4.pill}
-                  </span>
-                </div>
-
-                <div className="absolute inset-0 bg-[#080808] overflow-hidden">
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-zinc-600/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none font-serif text-white/5 text-[5rem] md:text-[7rem] font-bold tracking-[0.2em] leading-none uppercase">
-                    Clearsite
-                  </div>
-                  <div 
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[18%] pointer-events-none" 
-                    style={{
-                      clipPath: 'polygon(10% 0%, 25% 10%, 42% 5%, 60% 12%, 78% 3%, 92% 14%, 100% 100%, 0% 100%)',
-                      background: 'linear-gradient(to bottom, #4b5563, #18181b 70%)',
-                    }}
-                  />
-                  <div className="absolute bottom-[14%] left-1/2 -translate-x-1/2 w-[110px] h-[12px] bg-black/70 blur-md rounded-full pointer-events-none" />
-                </div>
-
-                <div className="absolute bottom-6 left-6 z-20 flex gap-2">
-                  {p4.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="border border-white/10 bg-black/60 text-white/80 text-[8px] font-semibold px-2 py-0.5 rounded-sm uppercase tracking-wider">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="absolute z-10 flex justify-center w-full transition-transform duration-500 group-hover:scale-105 bottom-[14%] scale-90 lg:scale-95">
-                  <SmartphoneMockup type={p4.mockupType} />
-                </div>
-              </div>
-
-              {/* Text Area */}
-              <div className="flex flex-col space-y-3 px-2">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl md:text-2xl font-black text-white group-hover:text-accent transition-colors">
-                    {p4.title}
-                  </h3>
-                  <span className="text-zinc-500 font-bold text-xs md:text-sm">{p4.year}</span>
-                </div>
-                <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-medium">
-                  {p4.desc}
-                </p>
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-accent hover:bg-white text-black text-[9px] font-black uppercase tracking-widest transition-all cursor-pointer rounded-sm group/btn shadow-sm">
-                    View Case Study <ArrowUpRight size={12} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                  </button>
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
-                    <Play size={10} fill="currentColor" /> Play Store
-                  </button>
-                  <button className="flex items-center gap-1.5 px-3.5 py-2 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[9px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
-                    <Apple size={10} /> App Store
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-
+          <div className="col-span-12 lg:col-span-5 flex flex-col lg:mt-24">
+            <ProjectCard project={p2} />
           </div>
-
         </div>
 
-        {/* 2. Small 3-Column Responsive Grid (Row 3, Horizontally Aligned) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
-          {smallProjectsList.map((proj, idx) => (
-            <motion.div
-              key={proj.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.1 }}
-              className="group flex flex-col space-y-6"
-            >
-              {/* Card Mockup Area with explicit size ratio aspect-[1.2/1] */}
-              <div className="relative w-full h-[320px] md:h-auto md:aspect-[1.2/1] overflow-hidden bg-black border border-[#575757] flex items-center justify-center transition-all duration-500 hover:border-accent/30 rounded-lg">
-                
-                {/* Pill in top-left */}
-                <div className="absolute top-5 left-5 z-20">
-                  <span className="border border-accent bg-black text-accent text-[8px] font-black px-2 py-0.5 rounded-sm uppercase tracking-wider">
-                    {proj.pill}
-                  </span>
-                </div>
-
-                {/* Background rendering for small mockup types */}
-                {proj.mockupType === "saharan" && (
-                  <div className="absolute inset-0 bg-[#07131b] overflow-hidden">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-cyan-600/10 rounded-full blur-2xl pointer-events-none" />
-                    <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none font-sans font-black text-cyan-500/10 text-3xl md:text-4xl tracking-[0.2em] leading-none uppercase">
-                      SaHaRan
-                    </div>
-                    <div className="absolute bottom-3 left-0 right-0 text-center pointer-events-none">
-                      <span className="text-white/20 text-[8px] font-bold tracking-[0.2em] uppercase">Overview</span>
-                    </div>
-                  </div>
-                )}
-
-                {proj.mockupType === "fitfuelz" && (
-                  <div className="absolute inset-0 bg-[#130707] overflow-hidden">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] bg-red-600/10 rounded-full blur-2xl pointer-events-none" />
-                    <div className="absolute top-10 left-0 right-0 text-center pointer-events-none">
-                      <span className="text-red-655/20 text-xs md:text-sm font-black tracking-[0.3em] uppercase">FITFUELZ</span>
-                    </div>
-                    <div className="absolute bottom-3 left-0 right-0 text-center pointer-events-none">
-                      <span className="text-white/20 text-[8px] font-bold tracking-[0.2em] uppercase">Overview</span>
-                    </div>
-                  </div>
-                )}
-
-                {proj.mockupType === "gwaupp" && (
-                  <div className="absolute inset-0 bg-[#040c08] overflow-hidden">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-emerald-600/10 rounded-full blur-2xl pointer-events-none" />
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.02)_1px,transparent_1px)] bg-[size:20px_100%] pointer-events-none" />
-                    <div className="absolute top-5 right-5 pointer-events-none">
-                      <span className="text-emerald-500/40 text-[9px] font-black tracking-widest uppercase">GWAUPP</span>
-                    </div>
-                  </div>
-                )}
-
-                {/* Bottom-left Tag list inside card */}
-                <div className="absolute bottom-5 left-5 z-20 flex gap-1.5">
-                  {proj.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="border border-white/10 bg-black/60 text-white/80 text-[7px] font-semibold px-2 py-0.5 rounded-sm uppercase tracking-wider">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Phone mockup scaled down slightly for small cards */}
-                <div className="absolute z-10 flex justify-center w-full transition-transform duration-500 group-hover:scale-95 bottom-[-15%] md:bottom-[-20%] lg:bottom-[-22%] scale-[0.75] md:scale-80 lg:scale-85">
-                  <SmartphoneMockup type={proj.mockupType} />
-                </div>
-
-              </div>
-
-              {/* Card Meta / Text */}
-              <div className="flex flex-col space-y-3 px-2">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-black text-white group-hover:text-accent transition-colors">
-                    {proj.title}
-                  </h3>
-                  <span className="text-zinc-550 font-bold text-xs">{proj.year}</span>
-                </div>
-                <p className="text-zinc-500 text-xs leading-relaxed font-medium">
-                  {proj.desc}
-                </p>
-
-                {/* Action buttons */}
-                <div className="flex flex-wrap gap-2 pt-1">
-                  <button className="flex items-center gap-1 px-2.5 py-1.5 bg-accent hover:bg-white text-black text-[8px] font-black uppercase tracking-widest transition-all cursor-pointer rounded-sm group/btn shadow-sm">
-                    View Case Study <ArrowUpRight size={10} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                  </button>
-                  <button className="flex items-center gap-1 px-2.5 py-1.5 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[8px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
-                    <Play size={9} fill="currentColor" /> Play Store
-                  </button>
-                  <button className="flex items-center gap-1 px-2.5 py-1.5 bg-zinc-950/80 border border-white/10 hover:border-accent/40 text-[8px] font-black text-white uppercase tracking-widest transition-all cursor-pointer rounded-sm">
-                    <Apple size={9} /> App Store
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+        {/* Wide Feature Card */}
+        <div className="w-full">
+          <ProjectCard project={p3} wide />
         </div>
 
       </div>
@@ -500,33 +210,17 @@ function SmartphoneMockup({ type }: { type: Project["mockupType"] }) {
   let contentElement: React.ReactNode = null;
 
   switch (type) {
-    case "mon5majeur":
+    case "instasign":
       screenBg = "bg-[#0c0c0e]";
-      contentElement = <Mon5majeurScreen />;
+      contentElement = <InstaSignScreen />;
       break;
-    case "celestial":
+    case "allrounder":
       screenBg = "bg-[#0a0a0c]";
-      contentElement = <CelestialScreen />;
+      contentElement = <AllrounderScreen />;
       break;
-    case "football-tilted":
-      screenBg = "bg-[#0a0a0c]";
-      contentElement = <FootballScreen />;
-      break;
-    case "clearsite":
-      screenBg = "bg-white";
-      contentElement = <ClearsiteScreen />;
-      break;
-    case "saharan":
-      screenBg = "bg-[#07131b]";
-      contentElement = <SaharanScreen />;
-      break;
-    case "fitfuelz":
-      screenBg = "bg-[#130707]";
-      contentElement = <FitfuelzScreen />;
-      break;
-    case "gwaupp":
-      screenBg = "bg-[#040c08]";
-      contentElement = <GwauppScreen />;
+    case "pokelive":
+      screenBg = "bg-[#0d0809]";
+      contentElement = <PokeliveScreen />;
       break;
   }
 
@@ -545,229 +239,142 @@ function SmartphoneMockup({ type }: { type: Project["mockupType"] }) {
   );
 }
 
-/* App Screens components */
-const Mon5majeurScreen = () => (
+/* InstaSignTracker — B2B SaaS operations dashboard */
+const InstaSignScreen = () => (
   <div className="w-full h-full bg-[#0c0c0e] text-white flex flex-col p-3 relative font-sans text-left">
     <div className="h-4" />
-    
     <div className="flex justify-between items-center px-1 mb-2">
-      <span className="text-[7px] font-bold text-zinc-500">Rate 10</span>
-      <div className="w-6 h-3 bg-zinc-800 rounded-full flex items-center justify-center">
-        <span className="text-[5px] font-bold text-orange-500">PRO</span>
+      <div>
+        <div className="text-[9px] font-black tracking-tight text-white leading-none">InstaSign</div>
+        <div className="text-[6px] text-zinc-500 uppercase tracking-widest">Tracker</div>
+      </div>
+      <div className="w-5 h-5 bg-orange-600/20 border border-orange-500/30 rounded-full flex items-center justify-center">
+        <span className="text-[6px] font-black text-orange-400">NT</span>
       </div>
     </div>
 
-    <div className="bg-[#18181b] border border-white/5 rounded-lg p-2 space-y-1.5 mb-2">
-      <div className="flex justify-between items-center">
-        <span className="text-[6px] font-bold text-zinc-400 uppercase tracking-wider">With Global Leagues</span>
-        <span className="text-[5px] text-zinc-500">2026</span>
-      </div>
-      <div className="text-xs font-black tracking-tight text-white leading-none">MON5MAJEUR</div>
-      <div className="text-[6px] text-zinc-400 leading-normal">Track and manage your fantasy sports teams with AI insights.</div>
-      
-      <button className="w-full py-1 bg-gradient-to-r from-orange-600 to-amber-600 rounded text-[7px] font-black uppercase tracking-wider text-white shadow-md">
-        Join Active League
+    <div className="grid grid-cols-3 gap-1.5 mb-2">
+      {[
+        { v: "128", l: "Orders" },
+        { v: "34", l: "In Prod." },
+        { v: "12", l: "Installs" },
+      ].map((s) => (
+        <div key={s.l} className="bg-[#18181b] border border-white/5 rounded-lg p-1.5 text-center">
+          <div className="text-[11px] font-black text-white leading-none">{s.v}</div>
+          <div className="text-[5px] text-zinc-500 uppercase tracking-wider mt-0.5">{s.l}</div>
+        </div>
+      ))}
+    </div>
+
+    <div className="text-[6px] font-bold text-zinc-500 uppercase tracking-widest px-1 mb-1">Active Jobs</div>
+    <div className="space-y-1.5">
+      {[
+        { t: "Mall facade — 12 panels", s: "In Production", c: "text-amber-400 border-amber-500/30 bg-amber-500/10" },
+        { t: "Showroom vinyl wrap", s: "Ready to Install", c: "text-sky-400 border-sky-500/30 bg-sky-500/10" },
+        { t: "Office lobby signage", s: "Installed", c: "text-emerald-400 border-emerald-500/30 bg-emerald-500/10" },
+      ].map((j) => (
+        <div key={j.t} className="bg-[#18181b]/70 border border-white/[0.04] rounded-lg p-2">
+          <div className="text-[7px] font-bold text-zinc-200 leading-tight">{j.t}</div>
+          <span className={`inline-block mt-1 text-[5px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded-full border ${j.c}`}>
+            {j.s}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <div className="mt-auto bg-orange-600 rounded-lg py-1.5 text-center">
+      <span className="text-[7px] font-black uppercase tracking-widest text-white">+ New Order</span>
+    </div>
+  </div>
+);
+
+/* Allrounder Pro — field-service shift & task management */
+const AllrounderScreen = () => (
+  <div className="w-full h-full bg-[#0a0a0c] text-white flex flex-col p-3 relative font-sans text-left">
+    <div className="h-4" />
+    <div className="px-1 mb-2">
+      <div className="text-[9px] font-black tracking-tight text-white leading-none">Allrounder Pro</div>
+      <div className="text-[6px] text-zinc-500">Scaffolding Team A · Berlin</div>
+    </div>
+
+    <div className="bg-gradient-to-br from-violet-600/30 to-violet-900/20 border border-violet-500/20 rounded-lg p-2 mb-2">
+      <div className="text-[6px] font-bold text-violet-300 uppercase tracking-widest">Today&apos;s Shift</div>
+      <div className="text-[10px] font-black text-white mt-0.5">07:00 – 15:00</div>
+      <div className="text-[6px] text-zinc-400 mt-0.5">Site 14 · Nordring Warehouse</div>
+      <button className="w-full mt-1.5 py-1 bg-violet-600 rounded text-[7px] font-black uppercase tracking-wider text-white">
+        Check In
       </button>
     </div>
 
-    <div className="grid grid-cols-2 gap-1.5 mb-2">
-      <div className="bg-[#18181b]/60 border border-white/[0.03] rounded p-1.5 flex flex-col items-center justify-center text-center">
-        <span className="text-[10px] text-orange-500 font-bold leading-none">+</span>
-        <span className="text-[5px] font-bold text-zinc-400 uppercase tracking-widest mt-1">Join League</span>
-      </div>
-      <div className="bg-[#18181b]/60 border border-white/[0.03] rounded p-1.5 flex flex-col items-center justify-center text-center">
-        <span className="text-[10px] text-orange-500 font-bold leading-none">+</span>
-        <span className="text-[5px] font-bold text-zinc-400 uppercase tracking-widest mt-1">Create League</span>
-      </div>
-    </div>
-
-    <div className="space-y-1 mt-auto">
-      <div className="text-[6px] font-black text-zinc-500 uppercase tracking-wider">Top Matches Today</div>
-      <div className="bg-[#18181b]/40 border border-white/[0.02] rounded p-1 flex justify-between items-center text-[6px]">
-        <span className="text-zinc-300">Inter FC</span>
-        <span className="text-orange-500 font-bold">VS</span>
-        <span className="text-zinc-300">Monaco FC</span>
-        <span className="bg-zinc-800 px-1 py-0.5 rounded text-[5px] text-zinc-400">Join</span>
-      </div>
-    </div>
-  </div>
-);
-
-const CelestialScreen = () => (
-  <div className="w-full h-full bg-[#0a0a0c] text-white flex flex-col p-3 relative font-sans text-left">
-    <div className="h-4" />
-
-    <div className="flex justify-between items-center mb-3">
-      <div className="flex items-center gap-1">
-        <div className="w-3.5 h-3.5 rounded-full bg-zinc-800 border border-white/10" />
-        <span className="text-[6px] text-zinc-400 font-semibold">Active User</span>
-      </div>
-      <span className="text-[6px] text-accent font-bold">CELESTIAL</span>
-    </div>
-
-    <div className="bg-[#121215] border border-white/5 rounded-lg p-2 space-y-1 mb-2 relative overflow-hidden">
-      <div className="absolute -right-4 -top-4 w-12 h-12 bg-blue-500/10 rounded-full blur-lg" />
-      
-      <div className="flex justify-between items-center text-[5px] text-zinc-500 font-bold uppercase tracking-wider">
-        <span>Active Match</span>
-        <span className="text-accent">Live</span>
-      </div>
-      <div className="text-[8px] font-black text-white">Aston Villa vs Arsenal</div>
-      <div className="flex items-baseline gap-1">
-        <span className="text-xs font-black text-accent">1 - 2</span>
-        <span className="text-[5px] text-zinc-500">76' Min</span>
-      </div>
-    </div>
-
-    <div className="bg-[#121215]/80 border border-white/[0.03] rounded-lg p-2 space-y-1">
-      <div className="text-[6px] font-bold text-zinc-400 uppercase tracking-wider">Win Probability</div>
-      <div className="flex gap-1 items-end h-8">
-        {[20, 35, 45, 60, 50, 65, 80].map((h, i) => (
-          <div key={i} className="flex-1 bg-accent/20 hover:bg-accent transition-colors rounded-sm" style={{ height: `${h}%` }} />
-        ))}
-      </div>
-      <div className="flex justify-between text-[5px] text-zinc-500">
-        <span>AST</span>
-        <span>DRAW</span>
-        <span>ARS</span>
-      </div>
-    </div>
-
-    <div className="mt-auto border-t border-white/[0.05] pt-1.5 flex justify-around text-[5px] text-zinc-500 font-bold uppercase">
-      <span className="text-white">Home</span>
-      <span>Stats</span>
-      <span>Leagues</span>
-    </div>
-  </div>
-);
-
-const FootballScreen = () => (
-  <div className="w-full h-full bg-[#0a0a0c] text-white flex flex-col p-3 relative font-sans text-left">
-    <div className="h-4" />
-
-    <div className="flex justify-between items-center mb-3">
-      <span className="text-[6px] text-zinc-400 font-bold uppercase tracking-wider">Lineup Creator</span>
-      <span className="px-1 py-0.5 bg-green-500/10 text-green-400 rounded text-[5px] font-semibold">Active</span>
-    </div>
-
-    <div className="bg-emerald-950/20 border border-emerald-500/10 rounded-lg p-2 mb-2">
-      <div className="text-[5px] text-emerald-400 font-bold uppercase tracking-wider mb-1">Squad Roster</div>
-      <div className="space-y-1">
-        {[
-          { name: "K. De Bruyne", pos: "MID", selected: true },
-          { name: "E. Haaland", pos: "FWD", selected: true },
-          { name: "V. van Dijk", pos: "DEF", selected: false },
-        ].map((player, idx) => (
-          <div key={idx} className="flex items-center justify-between p-1 bg-[#121215]/60 border border-white/[0.03] rounded text-[6px]">
-            <div className="flex items-center gap-1">
-              <div className="w-2.5 h-2.5 rounded-full bg-zinc-800" />
-              <span className="text-zinc-300">{player.name}</span>
-            </div>
-            <span className={player.selected ? "text-accent font-bold" : "text-zinc-600"}>
-              {player.selected ? "✓" : "+"}
-            </span>
+    <div className="text-[6px] font-bold text-zinc-500 uppercase tracking-widest px-1 mb-1">Tasks · 3 of 5 done</div>
+    <div className="space-y-1.5">
+      {[
+        { t: "Erect bay 1–4 scaffold", done: true },
+        { t: "Safety net inspection", done: true },
+        { t: "Load platform assembly", done: true },
+        { t: "Anchor torque check", done: false },
+        { t: "Site photo report", done: false },
+      ].map((task) => (
+        <div key={task.t} className="flex items-center gap-1.5 bg-[#141417] border border-white/[0.04] rounded-lg px-2 py-1.5">
+          <div className={`w-3 h-3 rounded-full border flex items-center justify-center shrink-0 ${task.done ? "bg-emerald-500 border-emerald-500" : "border-zinc-600"}`}>
+            {task.done && <span className="text-[6px] text-black font-black">✓</span>}
           </div>
+          <span className={`text-[7px] font-semibold ${task.done ? "text-zinc-500 line-through" : "text-zinc-200"}`}>
+            {task.t}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <div className="mt-auto flex justify-around items-center pt-2 border-t border-white/5">
+      {["Home", "Tasks", "Team"].map((n, i) => (
+        <span key={n} className={`text-[6px] font-bold uppercase tracking-wider ${i === 1 ? "text-violet-400" : "text-zinc-600"}`}>{n}</span>
+      ))}
+    </div>
+  </div>
+);
+
+/* Pokelive — live shopping with 1-tap checkout */
+const PokeliveScreen = () => (
+  <div className="w-full h-full bg-[#0d0809] text-white flex flex-col relative font-sans text-left overflow-hidden">
+    {/* Live video area */}
+    <div className="relative h-[52%] bg-gradient-to-br from-rose-900/40 via-[#160a0e] to-black p-3 flex flex-col">
+      <div className="h-4" />
+      <div className="flex justify-between items-center">
+        <span className="flex items-center gap-1 bg-rose-600 text-white text-[6px] font-black px-1.5 py-0.5 rounded uppercase tracking-widest">
+          <span className="w-1 h-1 bg-white rounded-full animate-pulse" /> Live
+        </span>
+        <span className="text-[6px] text-zinc-400 font-bold">👁 2.4K watching</span>
+      </div>
+      <div className="mt-auto">
+        <div className="text-[7px] font-bold text-white">@pokelive.store</div>
+        <div className="text-[6px] text-zinc-400">Flash sale — up to 40% off tonight only</div>
+      </div>
+      {/* floating comments */}
+      <div className="absolute right-2 bottom-16 space-y-1 text-right">
+        {["🔥🔥🔥", "price please?", "ordered mine!"].map((c) => (
+          <div key={c} className="text-[6px] text-zinc-300 bg-black/50 rounded-full px-2 py-0.5 inline-block ml-2">{c}</div>
         ))}
       </div>
     </div>
 
-    <button className="w-full py-1 bg-accent text-black rounded text-[7px] font-black uppercase tracking-wider mb-2">
-      Finalize Roster
-    </button>
-  </div>
-);
-
-const ClearsiteScreen = () => (
-  <div className="w-full h-full bg-white text-zinc-900 flex flex-col p-3 relative font-sans text-left">
-    <div className="h-4" />
-
-    <div className="flex justify-between items-center mb-3">
-      <span className="text-[7px] font-black tracking-widest text-zinc-950 uppercase">Clearsite</span>
-      <span className="text-[6px] font-bold text-zinc-500">ADMIN</span>
-    </div>
-
-    <div className="bg-zinc-50 border border-zinc-100 rounded-lg p-2 space-y-1 mb-2">
-      <div className="w-full h-12 bg-zinc-200 rounded relative overflow-hidden flex items-center justify-center">
-        <span className="text-[6px] text-zinc-400 font-bold">HOUSE IMAGE</span>
+    {/* Product sheet */}
+    <div className="flex-1 bg-[#141014] border-t border-white/10 rounded-t-2xl p-2.5 -mt-3 relative">
+      <div className="w-8 h-1 bg-zinc-700 rounded-full mx-auto mb-2" />
+      <div className="flex gap-2 items-center">
+        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-rose-500/40 to-purple-600/40 border border-white/10 shrink-0" />
+        <div className="flex-1">
+          <div className="text-[7px] font-bold text-white leading-tight">Wireless Earbuds Pro</div>
+          <div className="flex items-center gap-1 mt-0.5">
+            <span className="text-[9px] font-black text-white">৳2,499</span>
+            <span className="text-[6px] text-zinc-500 line-through">৳3,999</span>
+          </div>
+        </div>
       </div>
-      <div className="flex justify-between items-center pt-1">
-        <span className="text-[8px] font-black text-zinc-900">Modern Villa</span>
-        <span className="text-[7px] font-bold text-emerald-600">$4,500/mo</span>
-      </div>
-      <div className="text-[5px] text-zinc-500 leading-tight">3 Beds, 2 Baths, 2,400 sqft in Downtown Core.</div>
-    </div>
-
-    <div className="grid grid-cols-2 gap-1.5 mb-2">
-      <div className="bg-zinc-50 border border-zinc-100 rounded p-1 flex flex-col">
-        <span className="text-[7px] font-black text-zinc-900 leading-tight">12</span>
-        <span className="text-[4px] font-bold text-zinc-400 uppercase">Viewings</span>
-      </div>
-      <div className="bg-zinc-50 border border-zinc-100 rounded p-1 flex flex-col">
-        <span className="text-[7px] font-black text-zinc-900 leading-tight">3</span>
-        <span className="text-[4px] font-bold text-zinc-400 uppercase">Contracts</span>
-      </div>
-    </div>
-
-    <button className="w-full py-1 bg-zinc-950 text-white rounded text-[7px] font-black uppercase tracking-wider mt-auto">
-      Approve Listing
-    </button>
-  </div>
-);
-
-const SaharanScreen = () => (
-  <div className="w-full h-full bg-[#07131b] text-white flex flex-col p-3 relative font-sans text-left">
-    <div className="h-4" />
-    <span className="text-[7px] font-black tracking-wider text-cyan-400 mb-2">SAHARA FIN</span>
-
-    <div className="bg-[#121b22] border border-white/5 rounded-lg p-2 space-y-1 mb-2">
-      <span className="text-[5px] text-zinc-500 uppercase">Net Balance</span>
-      <div className="text-xs font-black text-white leading-none">$14,285.00</div>
-    </div>
-
-    <div className="bg-[#121b22]/80 border border-white/[0.03] rounded p-1.5 space-y-1">
-      <div className="flex gap-1 items-end h-8 justify-between">
-        {[10, 18, 14, 28, 16, 22, 26].map((h, i) => (
-          <div key={i} className="flex-1 bg-cyan-500/20 hover:bg-cyan-500 transition-colors rounded-sm" style={{ height: `${h}px` }} />
-        ))}
-      </div>
-    </div>
-  </div>
-);
-
-const FitfuelzScreen = () => (
-  <div className="w-full h-full bg-[#130707] text-white flex flex-col p-3 relative font-sans text-left">
-    <div className="h-4" />
-    <span className="text-[7px] font-black tracking-wider text-red-500 mb-2">FITFUELZ</span>
-
-    <div className="bg-[#1c0f0f] border border-white/5 rounded-lg p-2 space-y-1.5 mb-1.5">
-      <div className="flex justify-between items-center text-[5px] text-red-400 font-bold">
-        <span>DELUXE MEALS</span>
-        <span>★ 4.9</span>
-      </div>
-      <div className="text-[8px] font-black text-white leading-none">Fresh Grilled Salmon</div>
-      <div className="text-[5px] text-zinc-500 leading-tight">Rich in Omega-3 and proteins.</div>
-    </div>
-
-    <button className="w-full py-1 bg-red-600 text-white rounded text-[6px] font-black uppercase tracking-wider mt-auto">
-      Add to Diet Plan
-    </button>
-  </div>
-);
-
-const GwauppScreen = () => (
-  <div className="w-full h-full bg-[#040c08] text-white flex flex-col p-3 relative font-sans text-left">
-    <div className="h-4" />
-    <span className="text-[7px] font-black tracking-widest text-emerald-400 mb-2">GWAUPP</span>
-
-    <div className="bg-[#0c1811] border border-white/5 rounded-lg p-2 space-y-1.5 mb-2">
-      <span className="text-[5px] text-zinc-500 uppercase">Carbon Offset Score</span>
-      <div className="text-xs font-black text-emerald-400 leading-none">88.5 kW/h</div>
-      <div className="text-[5px] text-zinc-400">Carbon offset saved: +12.4%</div>
-    </div>
-
-    <div className="h-5 w-full bg-emerald-500/10 rounded border border-emerald-500/20 flex items-center justify-between px-2 text-[5px] text-emerald-400 font-bold mt-auto">
-      <span>ACTIVE GATEWAY</span>
-      <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+      <button className="w-full mt-2 py-1.5 bg-rose-600 rounded-lg text-[7px] font-black uppercase tracking-widest text-white shadow-lg shadow-rose-600/30">
+        Buy in 1 Tap
+      </button>
+      <div className="text-center text-[5px] text-zinc-500 mt-1">✓ In stock · Ships in 24h</div>
     </div>
   </div>
 );
