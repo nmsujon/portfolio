@@ -58,7 +58,7 @@ function ProjectCard({ project, wide = false }: { project: Project; wide?: boole
       className="w-full flex flex-col space-y-6 group"
     >
       {/* Card Image Area */}
-      <div className={`relative w-full overflow-hidden bg-black border border-[#575757] flex items-center justify-center transition-all duration-500 hover:border-accent/30 rounded-lg ${wide ? "h-[380px] lg:h-[420px]" : "h-[380px] lg:h-auto lg:aspect-[1.15/1]"}`}>
+      <div className={`relative w-full overflow-hidden bg-black border border-[#575757] flex items-center justify-center transition-all duration-500 hover:border-accent/30 rounded-lg ${wide ? "h-[420px] lg:h-[480px]" : "h-[380px] lg:h-auto lg:aspect-[1.15/1]"}`}>
         <div className="absolute top-6 left-6 z-20">
           <span className="border border-accent bg-black text-accent text-[9px] font-black px-2.5 py-1 rounded-sm uppercase tracking-wider">
             {project.pill}
