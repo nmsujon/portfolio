@@ -2,12 +2,31 @@
 
 import React from "react";
 
-// Client locations: Bangladesh (home), Germany, Jamaica, US
+// Client locations: ~19 countries across Europe, the Americas & Asia
+// (Bangladesh home base + client work across 30+ projects)
 const locationDots = [
   { id: "bd-dhaka", cx: 608, cy: 462, r: 5 },
   { id: "de-germany", cx: 468, cy: 332, r: 5 },
   { id: "jm-jamaica", cx: 212, cy: 428, r: 5 },
   { id: "us-east", cx: 252, cy: 352, r: 5 },
+  // Europe
+  { id: "eu-uk", cx: 432, cy: 308, r: 4 },
+  { id: "eu-france", cx: 446, cy: 342, r: 4 },
+  { id: "eu-netherlands", cx: 456, cy: 320, r: 4 },
+  { id: "eu-spain", cx: 432, cy: 368, r: 4 },
+  { id: "eu-italy", cx: 466, cy: 366, r: 4 },
+  { id: "eu-sweden", cx: 478, cy: 292, r: 4 },
+  // Americas
+  { id: "am-us-west", cx: 168, cy: 352, r: 4 },
+  { id: "am-canada", cx: 205, cy: 298, r: 4 },
+  { id: "am-mexico", cx: 192, cy: 402, r: 4 },
+  { id: "am-brazil", cx: 268, cy: 582, r: 4 },
+  // Asia
+  { id: "as-india", cx: 592, cy: 472, r: 4 },
+  { id: "as-uae", cx: 548, cy: 432, r: 4 },
+  { id: "as-singapore", cx: 642, cy: 522, r: 4 },
+  { id: "as-malaysia", cx: 630, cy: 506, r: 4 },
+  { id: "as-japan", cx: 722, cy: 402, r: 4 },
 ];
 
 export default function CountriesServed() {
@@ -323,7 +342,7 @@ export default function CountriesServed() {
           </h2>
           
           <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-bold tracking-[0.18em] uppercase max-w-xl">
-            FROM DHAKA TO GERMANY, JAMAICA &amp; THE US
+            FROM DHAKA TO 15+ COUNTRIES ACROSS EUROPE, THE AMERICAS &amp; ASIA
           </p>
         </div>
 
