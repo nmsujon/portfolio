@@ -24,7 +24,7 @@ const projects: Project[] = [
     desc: "Live stream shopping marketplace — browse live sellers across categories, watch real-time product demos, and check out in one tap. End-to-end mobile app design: home feed, category filters, seller hub, cart, and profile flows.",
     pill: "Live Commerce",
     tags: ["UI/UX Design", "App Design"],
-    image: "/assets/pokelive-app.png",
+    image: "/assets/pokelive.png",
     mockupType: "pokelive"
   },
   {
