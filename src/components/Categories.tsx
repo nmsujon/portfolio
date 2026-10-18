@@ -58,11 +58,11 @@ export default function Categories() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.6 }}
-                className="group relative bg-[#111112] border border-white/[0.03] p-8 pb-6 flex flex-col items-start min-h-[380px] hover:border-accent/20 transition-all duration-500"
+                className="group relative bg-[#111112] border border-white/5 p-8 pb-6 flex flex-col items-start min-h-[380px] hover:border-accent/40 transition-all duration-300"
               >
                 {/* Yellow/Lime Icon */}
                 <div className="text-accent mb-8">
-                  <IconComponent size={24} strokeWidth={1.5} />
+                  <IconComponent size={26} strokeWidth={1.5} />
                 </div>
 
                 {/* Content */}
@@ -70,14 +70,14 @@ export default function Categories() {
                   <h3 className="text-lg md:text-xl font-black tracking-wide text-white uppercase">
                     {cat.title}
                   </h3>
-                  <p className="text-zinc-500 text-xs md:text-sm leading-relaxed font-semibold">
+                  <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-medium">
                     {cat.desc}
                   </p>
                 </div>
 
                 {/* Separator line & Index number */}
-                <div className="w-full mt-8 pt-4 border-t border-white/[0.04]">
-                  <span className="text-xs font-bold text-zinc-650 select-none">
+                <div className="w-full mt-8 pt-4 border-t border-white/5">
+                  <span className="text-xs font-bold font-mono text-white/90 select-none">
                     {cat.num}
                   </span>
                 </div>

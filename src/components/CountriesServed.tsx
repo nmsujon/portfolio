@@ -337,12 +337,12 @@ export default function CountriesServed() {
 
         {/* Right Side: Heading & Subtitle (7 cols) */}
         <div className="lg:col-span-7 flex flex-col justify-center text-left space-y-4 pl-0 lg:pl-8">
-          <h2 className="text-4xl md:text-5xl lg:text-[52px] font-black tracking-tight text-accent leading-none">
-            DESIGNING ACROSS BORDERS
+          <h2 className="text-4xl md:text-5xl lg:text-[54px] font-black tracking-tight text-accent leading-[1.05] uppercase">
+            DESIGNING ACROSS<br className="hidden sm:inline" /> BORDERS
           </h2>
           
           <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-bold tracking-[0.18em] uppercase max-w-xl">
-            FROM DHAKA TO 15+ COUNTRIES ACROSS EUROPE, THE AMERICAS &amp; ASIA
+            FROM DHAKA TO 15+ COUNTRIES ACROSS EUROPE, THE AMERICAS & ASIA
           </p>
         </div>
 

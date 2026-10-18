@@ -139,7 +139,8 @@ export default function Navbar() {
 
           {/* Desktop CTA Resume */}
           <motion.a
-            href="/Nur_Mohammad_Sujon_Resume.pdf"
+            href="/assets/sujon%20cv.pdf"
+            download="sujon cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
@@ -152,13 +153,16 @@ export default function Navbar() {
 
           {/* Mobile Right Controls */}
           <div className="flex md:hidden items-center gap-2">
-            <button
-              onClick={() => handleNavClick("contact")}
+            <a
+              href="/assets/sujon%20cv.pdf"
+              download="sujon cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent text-black font-black text-[9px] uppercase tracking-wider cursor-pointer"
             >
               <Download className="w-3 h-3" />
               <span>CV</span>
-            </button>
+            </a>
 
             {/* Mobile Hamburger Button */}
             <button
@@ -214,7 +218,8 @@ export default function Navbar() {
 
             <div className="pt-2 border-t border-white/10">
               <a
-                href="/Nur_Mohammad_Sujon_Resume.pdf"
+                href="/assets/sujon%20cv.pdf"
+                download="sujon cv.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
