@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 
 // Client locations: ~19 countries across Europe, the Americas & Asia
 // (Bangladesh home base + client work across 30+ projects)
@@ -321,16 +322,71 @@ export default function CountriesServed() {
                 <path id="zw" d="M468.52 578.226l7.755 8.757 5.946 1.513 3.985-6.248-.312-8.28-6.465-3.338-2.43 1.098-3.62 5.524-5.015-.053.157 1.026z"/>
               </g>
 
-              {/* Yellow-Lime location dots */}
-              {locationDots.map((dot) => (
-                <circle 
-                  key={dot.id}
-                  cx={dot.cx} 
-                  cy={dot.cy} 
-                  r={dot.r} 
-                  className="fill-accent stroke-black/30 stroke-1" 
-                />
-              ))}
+              {/* Yellow-Lime location dots with sequential radar pulsing animation */}
+              {locationDots.map((dot, index) => {
+                const delay = index * 0.18;
+                return (
+                  <g key={dot.id}>
+                    {/* Outer ripple ping ring */}
+                    <motion.circle
+                      cx={dot.cx}
+                      cy={dot.cy}
+                      r={dot.r}
+                      fill="none"
+                      stroke="#DDF247"
+                      strokeWidth="1.2"
+                      initial={{ r: dot.r, opacity: 0 }}
+                      animate={{
+                        r: [dot.r, dot.r * 3],
+                        opacity: [0.85, 0],
+                      }}
+                      transition={{
+                        duration: 2.2,
+                        repeat: Infinity,
+                        delay: delay,
+                        ease: "easeOut",
+                      }}
+                    />
+
+                    {/* Secondary soft glow wave */}
+                    <motion.circle
+                      cx={dot.cx}
+                      cy={dot.cy}
+                      r={dot.r}
+                      fill="#DDF247"
+                      initial={{ r: dot.r, opacity: 0 }}
+                      animate={{
+                        r: [dot.r, dot.r * 2],
+                        opacity: [0.35, 0],
+                      }}
+                      transition={{
+                        duration: 2.2,
+                        repeat: Infinity,
+                        delay: delay,
+                        ease: "easeOut",
+                      }}
+                    />
+
+                    {/* Solid core dot with breathing pulse */}
+                    <motion.circle
+                      cx={dot.cx}
+                      cy={dot.cy}
+                      r={dot.r}
+                      className="fill-accent stroke-black/50 stroke-1"
+                      animate={{
+                        r: [dot.r, dot.r * 1.3, dot.r],
+                        opacity: [0.85, 1, 0.85],
+                      }}
+                      transition={{
+                        duration: 2.2,
+                        repeat: Infinity,
+                        delay: delay,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  </g>
+                );
+              })}
             </svg>
           </div>
         </div>
